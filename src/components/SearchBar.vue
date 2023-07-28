@@ -1,27 +1,32 @@
-<!-- components/SearchBar.vue -->
 <template>
-  <div class="mb-4">
+  <div>
     <input
       type="text"
       v-model="searchQuery"
       @input="handleSearch"
       placeholder="Search characters by name..."
-      class="px-4 py-2 border border-gray-300 rounded-md w-full"
+      class="px-4 py-2 text-white bg-[#3c3e44] focus:outline-none rounded-md w-full"
     />
   </div>
 </template>
 
 <script>
+import { ref, watch } from 'vue';
+
 export default {
-  data() {
+  setup(_, { emit }) {
+    const searchQuery = ref('');
+
+    watch(searchQuery, (newValue) => {
+      emit('search', newValue.trim());
+    });
+
     return {
-      searchQuery: '',
+      searchQuery,
+      handleSearch() {
+        emit('search', searchQuery.value.trim());
+      },
     };
-  },
-  methods: {
-    handleSearch() {
-      this.$emit('search', this.searchQuery.trim());
-    },
   },
 };
 </script>
