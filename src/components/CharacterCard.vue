@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col md:flex-col lg:flex-row bg-[#3c3e44] text-white rounded-lg shadow-md overflow-hidden transform transition duration-500 hover:scale-110">
+  <div v-if="!isLoading" class="flex flex-col md:flex-col lg:flex-row bg-[#3c3e44] text-white rounded-lg shadow-md overflow-hidden transform transition duration-500 hover:scale-110">
     <img :src="character.image" :alt="character.name" class="w-full lg:w-[220px] object-cover" />
     <div class="flex-grow p-4">
       <h3 class="text-3xl sm:text-lg md:text-xl lg:text-3xl font-bold">{{ character.name }}</h3>
@@ -16,20 +16,29 @@
       </div>
     </div>
   </div>
+  <CardPulse v-else/>
 </template>
 
 <script>
 import { computed } from 'vue'
+import CardPulse from './CardPulse.vue'
 
 export default {
+  components: {
+    CardPulse
+  },
   props: {
     character: {
       type: Object,
       required: true
+    },
+    isLoading: {
+      type: Boolean,
+      required: true
     }
+    
   },
   setup(props) {
-
     const statusClass = computed(() => {
       const status = props.character.status
       return {
@@ -40,8 +49,8 @@ export default {
     })
 
     return {
-      statusClass,
+      statusClass
     }
-  },
+  }
 }
 </script>

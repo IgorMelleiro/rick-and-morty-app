@@ -1,6 +1,6 @@
 <template>
   <div class="flex justify-center space-x-4 mt-8">
-    <button @click="prevPage" :disabled="isFirstPage" class="px-4 py-2 bg-[#00ff00] text-white rounded-xl disabled:opacity-50">
+    <button @click="prevPage" :disabled="isFirstPage" class="px-4 py-2 text-white rounded-xl disabled:opacity-50">
       <i class="fas fa-chevron-left"></i>
     </button>
 
@@ -10,7 +10,7 @@
       </button>
     </div>
 
-    <button @click="nextPage" :disabled="isLastPage" class="px-4 py-2 bg-[#00ff00] text-white rounded-xl disabled:opacity-50">
+    <button @click="nextPage" :disabled="isLastPage" class="px-4 py-2 text-white rounded-xl disabled:opacity-50">
       <i class="fas fa-chevron-right"></i>
     </button>
   </div>

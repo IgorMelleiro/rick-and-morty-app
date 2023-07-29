@@ -1,6 +1,6 @@
 <template>
   <div class="container w-full lg:w-9/12 md:w-9/12 mx-auto p-4">
-    <h1 class="text-3xl text-center text-[white] font-semibold mb-4">Rick and Morty Characters</h1>
+    <h1 class="text-4xl text-center text-[white] font-semibold mb-4">Rick and Morty Characters</h1>
 
     <div class="flex flex-row w-full gap-2 mb-4">
       <SearchBar class="w-8/12 lg:w-10/12 md:w-9/12" @search="handleSearch" />
@@ -10,7 +10,7 @@
     <!-- Display error message if any -->
     <p v-if="errorMessage" class="text-red-500 font-bold mb-4">{{ errorMessage }}</p>
 
-    <CardGrid :characters="filteredCharacters" />
+    <CardGrid :characters="filteredCharacters" :isLoading="isLoading" />
     <PaginationItem :currentPage="filters.currentPage" :totalPages="totalPages" @update:currentPage="setCurrentPage" />
   </div>
 </template>
